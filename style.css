@@ -1,0 +1,41 @@
+.main__container{
+    height: 100vh;
+}
+.name__container{
+    background: rgb(0, 0, 0);
+}
+.name__container .name__container--input--container{
+    max-width: 300px;
+}
+.name__container--input--container > label{
+    font-size: 2.5em;
+    color: rgb(49, 255, 49);
+    margin-left: .5em;
+}
+.name__container--input--container > input{
+    font-size: 1.7em;
+    background: transparent;
+    border: 3px solid rgb(32, 104, 32);
+    border-radius: 15px;
+    color: #fff;
+    padding: .3em 0 .3em .8em;
+}
+.name__container--input--container > input:focus{
+    border: 3px solid rgb(32, 104, 32);
+    outline: none;
+}
+@media (max-width: 667px){
+    html{
+        font-size: 8px;
+    }
+}
+@media (min-width: 668px) {
+    html{
+        font-size: 12px;
+    }
+}
+@media (min-width: 1100px) {
+    html{
+        font-size: 16px;
+    }
+}
