@@ -32,6 +32,24 @@
 .start__game__btn:hover , .start__game__btn:focus{
     color: #fff !important;
 }
+.hidden-style{
+    display: none;
+}
+.game__container--board{
+    background: rgb(49, 255, 49);
+}
+.game__container--board > div{
+    width: 30%;
+    height: 30%;
+}
+@media (max-width: 992px){
+    .game__container--board{
+        height: 75%;
+    } 
+    .game__container--UsersData{
+        height: 25%;
+    }
+}
 @media (max-width: 667px){
     html{
         font-size: 8px;
