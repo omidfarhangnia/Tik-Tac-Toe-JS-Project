@@ -55,6 +55,15 @@
     height: 50px;
     padding: 0 !important;
 }
+.board-cells{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.board-cells > span{
+    font-size: 8em;
+    color: #fff;
+}
 @media (max-width: 992px){
     .game__container--board{
         height: 75%;
