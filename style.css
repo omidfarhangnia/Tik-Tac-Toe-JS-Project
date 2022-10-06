@@ -42,12 +42,34 @@
     width: 30%;
     height: 30%;
 }
+.UsersData__box{
+    font-size: 3em;
+    text-align: center;
+    text-justify: center;
+    line-height: 5em;
+    border-radius: 50%;
+    color: #fff;
+}
 @media (max-width: 992px){
     .game__container--board{
         height: 75%;
     } 
     .game__container--UsersData{
         height: 25%;
+    }
+    .game__container--UsersData{
+        margin-bottom: 1.5em;
+    }
+    .UsersData__box{
+        line-height: 0;
+        text-align: none;
+        text-justify: none;
+        width: 40%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
     }
 }
 @media (max-width: 667px){
