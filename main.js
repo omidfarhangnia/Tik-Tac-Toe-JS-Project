@@ -1,5 +1,6 @@
 const StartGameBtn = document.querySelector(".start__game__btn");
 StartGameBtn.addEventListener("click" , StartGame);
+var PlayerTurns = 0;
 
 // فانکشنی برای اضافه کردن کلاس 
 function AddClassToElement(element , className){
@@ -56,4 +57,17 @@ function FillUserData(Player1Input , Player1Color , Player2Input , Player2Color)
  
     CheckTheColor(Player1Color.value , UserDataPlayer1)
     CheckTheColor(Player2Color.value , UserDataPlayer2)
+}
+
+const BoardCells = document.querySelectorAll(".board-cells");
+BoardCells.forEach((element) => {
+    element.addEventListener("click" , () => {
+        FillCellWithSymbols(element)
+    })
+})
+
+function FillCellWithSymbols(element){
+    var ElementChild = element.querySelector("span");
+    ElementChild.textContent = (PlayerTurns % 2 === 0) ? "X" : "O";
+    PlayerTurns++;
 }
