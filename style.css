@@ -47,8 +47,13 @@
     text-align: center;
     text-justify: center;
     line-height: 5em;
-    border-radius: 50%;
+    border-radius: 2em;
     color: #fff;
+}
+.players__color__input{
+    border: 0 !important;
+    height: 50px;
+    padding: 0 !important;
 }
 @media (max-width: 992px){
     .game__container--board{
