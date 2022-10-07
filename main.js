@@ -64,7 +64,8 @@ BoardCells.forEach((element) => {
     element.addEventListener("click" , () => {
         var ElementChild = element.querySelector("span");
         FillCellWithSymbols(ElementChild);
-        IsWinner(element);
+        SaveSelectedCells(element);
+        IsWinner();
     })
 })
 
@@ -74,15 +75,41 @@ function FillCellWithSymbols(ElementChild){
     PlayerTurns++;
 }
 
-function IsWinner(element){
+function SaveSelectedCells(element){
     var SelectedCellNum = element.classList[0].match(/(\d)/g)[0];
     if(PlayerTurns % 2 === 0){
         playerX.add(SelectedCellNum);
-        // console.log("playerX");
-        // console.log(playerX);
     }else{
-        playerO.add(SelectedCellNum)
-        // console.log("playerO");
-        // console.log(playerO);
+        playerO.add(SelectedCellNum);
     }
+}
+
+function IsWinner(){
+    var WinnerSituations = [
+        ["1" , "2" , "3"],
+        ["4" , "5" , "6"],
+        ["7" , "8" , "9"],
+        ["1" , "4" , "7"],
+        ["2" , "5" , "8"],
+        ["3" , "6" , "9"],
+        ["1" , "5" , "9"],
+        ["3" , "5" , "7"]
+    ];
+
+    CheckPlayerIsWinner(playerX , WinnerSituations , "player2");
+    CheckPlayerIsWinner(playerO , WinnerSituations , "player1");
+}
+
+function CheckPlayerIsWinner(player , WinnerSituations , playerNum){
+    player = Array.from(player);
+    if(player.length < 3) return;
+    for(var j = 0; j < WinnerSituations.length; j++){
+        if(WinnerSituations[j].every(r=> player.indexOf(r) >= 0)){
+            WeHaveWinner(playerNum)
+        }
+    }
+}
+
+function WeHaveWinner(playerNum){
+    console.log(`${playerNum} is our winner ?`)
 }
