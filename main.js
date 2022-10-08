@@ -10,9 +10,9 @@ function AddClassToElement(element , className){
 function RemoveClassFromElement(element , className){
     element.classList.remove(className);
 }
+const GameContainer = document.querySelector(".game__container");
 function StartGame(){
     const NameContainer = document.querySelector(".name__container");
-    const GameContainer = document.querySelector(".game__container");
     const InputPlayerNumOne = document.getElementById("player__num__1__name");
     const ColorPlayerNumOne = document.getElementById("PlayerOneColor");
     const InputPlayerNumTwo = document.getElementById("player__num__2__name");
@@ -104,20 +104,30 @@ function CheckPlayerIsWinner(player , WinnerSituations , playerNum){
     if(player.length < 3) return;
     for(var j = 0; j < WinnerSituations.length; j++){
         if(WinnerSituations[j].every(r=> player.indexOf(r) >= 0)){
-            WeHaveWinner(playerNum == "player1" ? UserDataPlayer1 : UserDataPlayer2);
+            WeHaveWinner(playerNum == "player1" ? UserDataPlayer1 : UserDataPlayer2 , playerNum == "player1" ? "X" : "O");
         }
     }
 }
 
-function WeHaveWinner(playerNum){
-    setTimeout(() => {
-        alert(`congratulation, ${playerNum.textContent.trim()} is our winner!`)
-    }, 2);
+function WeHaveWinner(playerNum , playerSymbol){
+    const WinnerPageContainer = document.querySelector(".winnerPage__container");
+    const WinnerPageHeader = WinnerPageContainer.querySelector("h1");
+    const WinnerPageSymbol = WinnerPageContainer.querySelector("p");
     // ما در اینجا به پیغام تبریک نیاز داریم 
-    // به دلیل اینکه الرت بدون تایم اوت جلوی قرار گرفتن مهره آخر را میگیرد به این تایم اوت نیاز داریم
-    BoardCells.forEach((element) => {
-        ElementChild = element.querySelector("span");
-        ElementChild.innerHtml = "";
-    })
-    // با اینکار صفحه را خالی میکنیم
+    setTimeout(() => {
+        WinnerPageContainer.classList.remove("hidden-style");
+        GameContainer.classList.add("hidden-style");
+        WinnerPageHeader.querySelector(".WinnerName").textContent = playerNum.textContent.trim();
+        WinnerPageSymbol.querySelector(".WinnerSymbol").textContent = playerSymbol;
+    }, 400);
+
+    document.getElementById("WinnerName").textContent = playerNum.textContent.trim();
+    document.getElementById("WinnerSymbol").textContent = playerSymbol;
+    
 }
+
+    // BoardCells.forEach((element) => {
+    //     ElementChild = element.querySelector("span");
+    //     ElementChild.innerHtml = "";
+    // })
+    // // با اینکار صفحه را خالی میکنیم
