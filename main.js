@@ -31,10 +31,9 @@ function StartGame(){
     AddClassToElement(NameContainer , "hidden-style");
     RemoveClassFromElement(GameContainer , "hidden-style");
 }
+const UserDataPlayer1 = document.querySelector(".UserData--player1");
+const UserDataPlayer2 = document.querySelector(".UserData--player2");
 function FillUserData(Player1Input , Player1Color , Player2Input , Player2Color){
-    const UserDataPlayer1 = document.querySelector(".UserData--player1");
-    const UserDataPlayer2 = document.querySelector(".UserData--player2");
-
     // این فانکشن چک میکند که اگر رنگ وارد شده روشن است رنگ متن را تغییر میدهد که دیده شود
     let CheckTheColor = (hex , element) => {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -105,11 +104,20 @@ function CheckPlayerIsWinner(player , WinnerSituations , playerNum){
     if(player.length < 3) return;
     for(var j = 0; j < WinnerSituations.length; j++){
         if(WinnerSituations[j].every(r=> player.indexOf(r) >= 0)){
-            WeHaveWinner(playerNum)
+            WeHaveWinner(playerNum == "player1" ? UserDataPlayer1 : UserDataPlayer2);
         }
     }
 }
 
 function WeHaveWinner(playerNum){
-    console.log(`${playerNum} is our winner ?`)
+    setTimeout(() => {
+        alert(`congratulation, ${playerNum.textContent.trim()} is our winner!`)
+    }, 2);
+    // ما در اینجا به پیغام تبریک نیاز داریم 
+    // به دلیل اینکه الرت بدون تایم اوت جلوی قرار گرفتن مهره آخر را میگیرد به این تایم اوت نیاز داریم
+    BoardCells.forEach((element) => {
+        ElementChild = element.querySelector("span");
+        ElementChild.innerHtml = "";
+    })
+    // با اینکار صفحه را خالی میکنیم
 }
