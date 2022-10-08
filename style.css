@@ -33,7 +33,7 @@
     color: #fff !important;
 }
 .hidden-style{
-    display: none;
+    display: none !important;
 }
 .game__container--board{
     background: rgb(49, 255, 49);
@@ -63,6 +63,12 @@
 .board-cells > span{
     font-size: 8em;
     color: #fff;
+}
+.winnerPage__container > h1{
+    font-size: 5em;
+}
+.winnerPage__container > p{
+    font-size: 2em;
 }
 @media (max-width: 992px){
     .game__container--board{
