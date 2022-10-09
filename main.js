@@ -109,25 +109,34 @@ function CheckPlayerIsWinner(player , WinnerSituations , playerNum){
     }
 }
 
+const WinnerPageContainer = document.querySelector(".winnerPage__container");
 function WeHaveWinner(playerNum , playerSymbol){
-    const WinnerPageContainer = document.querySelector(".winnerPage__container");
     const WinnerPageHeader = WinnerPageContainer.querySelector("h1");
     const WinnerPageSymbol = WinnerPageContainer.querySelector("p");
     // ما در اینجا به پیغام تبریک نیاز داریم 
     setTimeout(() => {
-        WinnerPageContainer.classList.remove("hidden-style");
-        GameContainer.classList.add("hidden-style");
-        WinnerPageHeader.querySelector(".WinnerName").textContent = playerNum.textContent.trim();
-        WinnerPageSymbol.querySelector(".WinnerSymbol").textContent = playerSymbol;
+        AddClassToElement(GameContainer , "hidden-style");
+        RemoveClassFromElement(WinnerPageContainer , "hidden-style");
+        var WinnerNameContainers = document.querySelectorAll(".WinnerName");
+        Array.from(WinnerNameContainers).forEach(element => {
+            element.textContent = `${playerNum.textContent.trim()}`; 
+        });
+        document.getElementById("WinnerSymbol").textContent = playerSymbol;
     }, 400);
-
-    document.getElementById("WinnerName").textContent = playerNum.textContent.trim();
-    document.getElementById("WinnerSymbol").textContent = playerSymbol;
-    
 }
 
-    // BoardCells.forEach((element) => {
-    //     ElementChild = element.querySelector("span");
-    //     ElementChild.innerHtml = "";
-    // })
-    // // با اینکار صفحه را خالی میکنیم
+const PlayAgainBtn = document.getElementById("PlayAgainBtn");
+PlayAgainBtn.addEventListener('click' , PlayAgain)
+
+function PlayAgain(){
+    BoardCells.forEach((element) => {
+        ElementChild = element.querySelector("span");
+        ElementChild.textContent = "";
+    });
+    // با اینکار صفحه را خالی میکنیم
+    RemoveClassFromElement(GameContainer , "hidden-style");
+    AddClassToElement(WinnerPageContainer , "hidden-style");
+    
+    playerO.clear();
+    playerX.clear();
+}
