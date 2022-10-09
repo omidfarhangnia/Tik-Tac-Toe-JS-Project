@@ -37,17 +37,18 @@
 }
 .game__container--board{
     background: rgb(49, 255, 49);
+    max-width: 600px;
+    max-height: 600px;
 }
 .game__container--board > div{
-    width: 30%;
-    height: 30%;
+    width: 32%;
+    height: 32%;
 }
 .UsersData__box{
     font-size: 3em;
     text-align: center;
     text-justify: center;
     line-height: 5em;
-    border-radius: 2em;
     color: #fff;
 }
 .players__color__input{
@@ -61,7 +62,7 @@
     justify-content: center;
 }
 .board-cells > span{
-    font-size: 8em;
+    font-size: 7em;
     color: #fff;
 }
 .winnerPage__container > h1{
@@ -73,6 +74,8 @@
 @media (max-width: 992px){
     .game__container--board{
         height: 75%;
+        max-width: 420px;
+        max-height: 420px;
     } 
     .game__container--UsersData{
         height: 25%;
@@ -95,6 +98,13 @@
 @media (max-width: 667px){
     html{
         font-size: 8px;
+    }
+    .game__container--board{
+        max-width: 220px;
+        max-height: 220px;
+    }
+    .game__container--UsersData > div{
+        width: 25%;
     }
 }
 @media (min-width: 668px) {
